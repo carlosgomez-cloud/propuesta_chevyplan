@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chevyplan × Jeeves · Propuesta mejorada y comparativo vs. Clara</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Inter+Tight:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0B0B0E;--card:#141418;--card2:#17171C;--green:#00D68F;--gold:#C9A84C;--txt:#F5F5F7;--mut:#9C9CA6;--bd:#26262E}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--txt);font-family:Inter,system-ui,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:var(--gold)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:'Inter Tight',Inter,sans-serif;letter-spacing:-.02em}
+.gold{color:var(--gold)}.green{color:var(--green)}
+.top{display:flex;justify-content:space-between;align-items:center;padding:26px 0}
+.brand small{display:block;font-size:10px;letter-spacing:.2em;color:var(--mut);font-weight:500}
+.clogo{height:64px;width:auto;border-radius:8px;background:#fff;padding:6px 10px}
+.hero{padding:30px 0 50px;border-bottom:1px solid var(--bd)}
+.pill{display:inline-block;border:1px solid var(--bd);border-radius:999px;padding:6px 14px;font-size:12px;color:var(--mut);margin-bottom:18px}
+.pill.ok{border-color:#1f3a2f;color:var(--green);background:#0f1a15}
+.hero h1{font-size:clamp(30px,4.6vw,50px);line-height:1.08;font-weight:700;max-width:940px}
+.hero p.lead{color:var(--mut);font-size:17px;max-width:800px;margin-top:18px}
+.stats{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.stat{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:12px 16px}
+.stat b{display:block;font-family:'Inter Tight';font-size:22px;color:var(--gold)}
+.stat span{font-size:12px;color:var(--mut)}
+.cards{display:flex;gap:16px;align-items:flex-end;flex-wrap:wrap;margin-top:34px}
+.cc{display:flex;flex-direction:column;gap:8px}
+.cc-photo{background:#000;border:1px solid var(--bd);border-radius:16px;overflow:hidden}
+.cc-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.cc span{font-size:12px;color:var(--mut)}
+.p-elite{width:190px;height:245px}.p-corp{width:260px;height:156px}.p-virt{width:230px;height:139px}.p-pay{width:280px;height:125px}
+section{padding:56px 0;border-bottom:1px solid var(--bd)}
+.sh{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:24px}
+.sh h2{font-size:clamp(24px,3vw,34px)}
+.sh p{color:var(--mut);max-width:700px;margin-top:6px}
+.toggle-btn{background:transparent;border:1px solid var(--bd);color:var(--txt);border-radius:999px;padding:10px 18px;font:500 14px Inter;cursor:pointer}
+.toggle-btn:hover{border-color:var(--gold)}
+.panel{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:22px;margin-bottom:22px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+label{display:block;font-size:13px;color:var(--mut);margin-bottom:6px}
+input[type=number],input[type=text]{width:100%;background:var(--card2);border:1px solid var(--bd);color:var(--txt);border-radius:10px;padding:11px 12px;font:500 15px Inter}
+input:disabled{opacity:.85;color:var(--gold)}
+.hint{font-size:12px;color:var(--mut);margin-top:5px}
+.note{font-size:12.5px;color:var(--mut);background:var(--card2);border:1px dashed var(--bd);border-radius:12px;padding:14px;margin-top:18px}
+.res-title{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);margin:6px 0 12px}
+.rsg{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.rs{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:18px}
+.rs small{color:var(--mut);font-size:13px}
+.rs b{display:block;font-family:'Inter Tight';font-size:24px;margin-top:4px;color:var(--green)}
+.tot{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:16px}
+.tt{background:linear-gradient(180deg,#121a16,#141418);border:1px solid #1f3a2f;border-radius:18px;padding:22px}
+.tt.g{background:linear-gradient(180deg,#1f1a0d,#141418);border-color:#4a3d18}
+.tt small{color:var(--mut)}
+.tt .big{font-family:'Inter Tight';font-size:34px;font-weight:700;color:var(--green);margin:4px 0 10px}
+.tt .net{font-size:14px;color:var(--mut);border-top:1px solid var(--bd);padding-top:10px}
+.tt .net b{color:var(--txt);font-size:18px}
+.roe{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:16px}
+.rr{background:linear-gradient(180deg,#1f1a0d,#141418);border:1px solid #4a3d18;border-radius:18px;padding:24px;text-align:center}
+.rr small{color:var(--gold);letter-spacing:.1em;text-transform:uppercase;font-size:12px}
+.rr .big{font-family:'Inter Tight';font-size:52px;font-weight:800;color:var(--gold);line-height:1.1;margin-top:6px}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--bd);border-radius:16px;overflow:hidden}
+th,td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--bd);vertical-align:top;font-size:14.5px}
+th{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);background:var(--card2)}
+td:first-child{font-weight:600;width:28%}
+td:nth-child(2){color:var(--mut)}
+tr:last-child td{border-bottom:none}
+.tbl{overflow-x:auto}
+.cmp td{vertical-align:middle}
+.cmp td:nth-child(2),.cmp td:nth-child(3){color:var(--txt);text-align:center;width:30%}
+.cmp th:nth-child(2),.cmp th:nth-child(3){text-align:center}
+.cmp th:nth-child(2){color:var(--gold)}
+.cmp small{color:var(--mut)}
+.cmp td:first-child small{font-weight:400}
+.yes{color:var(--green);font-weight:700}.no{color:#ff7a7a;font-weight:700}
+.cmp-note{font-size:12.5px;color:var(--mut);margin-top:10px}
+.why{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:22px}
+.wc{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:22px}
+.wc.g{border-color:#4a3d18;background:linear-gradient(180deg,#1f1a0d,#141418)}
+.wc .ic{font-size:24px}
+.pf{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:6px 22px}
+.pf li{font-size:14px;color:var(--mut);padding:6px 0 6px 22px;position:relative;border-bottom:1px solid #1d1d23}
+.pf li b{color:var(--txt)}
+.pf li:before{content:'✓';position:absolute;left:0;color:var(--green);font-weight:700}
+.wc h3{font-size:17px;margin:8px 0 6px}
+.wc p{color:var(--mut);font-size:14px}
+.wc .vs{display:flex;gap:18px;margin:6px 0 4px;align-items:baseline}
+.wc .vs b{font-family:'Inter Tight';font-size:40px;line-height:1;color:var(--gold)}
+.wc .vs span{font-size:13px;color:var(--mut)}
+.wc .vs i{font-style:normal;font-family:'Inter Tight';font-size:28px;color:var(--mut)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:6px}
+.st{background:var(--card2);border:1px solid var(--bd);border-radius:14px;padding:16px}
+.st b{display:inline-block;width:26px;height:26px;border-radius:50%;border:1px solid var(--gold);color:var(--gold);font:600 13px/24px Inter;text-align:center;margin-bottom:8px}
+.st h4{font-size:15px;margin-bottom:4px}
+.st p{font-size:13.5px;color:var(--mut)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
+.xl{margin-top:16px}
+.xl table{font-size:12.5px}
+.xl th,.xl td{padding:9px 10px;font-size:12.5px;white-space:nowrap}
+.xl td:first-child{width:auto;font-weight:500}
+.xl td:nth-child(2){color:var(--txt)}
+.xl .cap{font-size:12px;color:var(--mut);margin:8px 0 0}
+.vids{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.vc{background:var(--card);border:1px solid var(--bd);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.vf{position:relative;aspect-ratio:16/9;background:#000;cursor:pointer}
+.vf img{width:100%;height:100%;object-fit:cover;display:block;opacity:.85;transition:opacity .2s}
+.vf:hover img{opacity:1}
+.vf .pl{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.vf .pl span{width:64px;height:64px;border-radius:50%;background:rgba(11,11,14,.75);border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:24px;padding-left:4px}
+.vf iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vb{padding:16px 18px}
+.vb .tag{display:inline-block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid #4a3d18;border-radius:999px;padding:3px 10px;margin-bottom:8px}
+.vb h3{font-size:16px;margin-bottom:4px}
+.vb p{font-size:13.5px;color:var(--mut)}
+.hub{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;background:linear-gradient(180deg,#1f1a0d,#141418);border:1px solid #4a3d18;border-radius:18px;padding:22px 24px;margin-bottom:18px}
+.hub h3{font-size:20px}
+.hub p{color:var(--mut);font-size:14px;margin-top:4px;max-width:640px}
+.btn{display:inline-block;background:var(--gold);color:#0B0B0E;border-radius:999px;padding:12px 20px;font:600 14px Inter;text-decoration:none;white-space:nowrap}
+.slider-box{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:18px 20px;margin-bottom:16px}
+.slider-box input[type=range]{width:100%;accent-color:var(--gold);cursor:pointer}
+.slider-scale{position:relative;height:18px;font-size:12px;color:var(--mut);margin-top:4px}
+.slider-scale span{position:absolute;top:0;white-space:nowrap}
+.slider-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+.slider-top label{margin:0;font-size:14px}
+.slider-top label b{color:var(--txt);font-size:18px}
+.manual{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--mut)}
+.manual input{width:190px;background:var(--card2);border:1px solid var(--bd);color:var(--txt);border-radius:10px;padding:8px 10px;font:600 14px Inter;text-align:right}
+.plan{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.pc{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:24px}
+.pc.g{border-color:#4a3d18}
+.pc h3{font-size:20px;margin-bottom:4px}
+.pc .price{font-family:'Inter Tight';font-size:30px;font-weight:700;color:var(--gold);margin:6px 0 14px}
+.pc ul{list-style:none}
+.pc li{padding:7px 0 7px 24px;position:relative;font-size:14.5px;border-bottom:1px solid #1d1d23}
+.pc li:before{content:'✓';position:absolute;left:0;color:var(--green);font-weight:700}
+footer{padding:36px 0 50px;color:var(--mut);font-size:13.5px}
+footer b{color:var(--txt)}
+@media(max-width:640px){.p-elite{width:150px;height:195px}.p-corp,.p-virt,.p-pay{width:100%;height:auto;aspect-ratio:1.7}.cc{width:100%}.cc:first-child{width:auto}.clogo{height:48px}.rr .big{font-size:40px}}
+</style>
+</head>
+<body>
+<div id="gate" style="position:fixed;inset:0;background:#0B0B0E;z-index:9999;display:flex;align-items:center;justify-content:center;padding:16px;font-family:Inter,system-ui,sans-serif"><form id="gf" style="background:#141418;border:1px solid #26262E;border-radius:18px;padding:30px 26px;width:100%;max-width:340px;text-align:center;color:#F5F5F7"><img src="https://carlosgomez-cloud.github.io/propuesta_constructorabolivar/jeeves-logo_1.png" alt="Jeeves" style="height:42px;width:auto;display:block;margin:0 auto"><div style="color:#9C9CA6;font-size:14px;margin:8px 0 18px">Propuesta privada · Chevyplan</div><input id="gp" type="password" placeholder="Clave de acceso" autocomplete="off" style="width:100%;background:#17171C;border:1px solid #26262E;color:#F5F5F7;border-radius:10px;padding:12px;font:500 15px Inter,sans-serif;margin-bottom:12px"><button type="submit" style="width:100%;background:#C9A84C;color:#0B0B0E;border:none;border-radius:10px;padding:12px;font:600 15px Inter,sans-serif;cursor:pointer">Ingresar</button><div id="ge" style="color:#ff7a7a;font-size:13px;margin-top:10px;min-height:16px"></div></form></div>
+<script>(function(){var H="f1e58c5dcb6135f5807a7d8a32916d82a8be4eb0bcdb25c6d84fafe24e04e08d";function open(){var g=document.getElementById("gate");if(g)g.remove();}try{if(sessionStorage.getItem("rk_cvp")===H){open();return;}}catch(_){}document.getElementById("gf").addEventListener("submit",async function(e){e.preventDefault();var val=document.getElementById("gp").value.trim().toLowerCase();var buf=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(val));var h=Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,"0")}).join("");if(h===H){try{sessionStorage.setItem("rk_cvp",H)}catch(_){}open();}else{document.getElementById("ge").textContent="Clave incorrecta";}});})();</script>
+
+<div class="wrap">
+<div class="top">
+<div class="brand"><img src="https://carlosgomez-cloud.github.io/propuesta_constructorabolivar/jeeves-logo_1.png" alt="Jeeves" style="height:44px;width:auto;display:block"><small style="margin-top:8px">Propuesta para</small></div>
+<img class="clogo" src="https://chevyplan.com.co/wp-content/uploads/2024/08/00-ChevyPlan-Logotipo-2025_001-Black.svg" alt="Chevrolet · ChevyPlan">
+</div>
+
+<div class="hero">
+<span class="pill ok">Propuesta mejorada · Noviembre 2026</span>
+<h1>La misma suscripción que Clara, <span class="green">retiros a la mitad del costo</span> y la legalización de gastos resuelta con IA.</h1>
+<p class="lead">Mantenemos la suscripción de COP 1.200.000 al mes y bajamos la comisión de retiros en efectivo al 1% (Clara: 2%). Además, Chevyplan recibe tarjetas corporativas con 1% de cashback, un agente de IA que legaliza cada gasto y la información contable lista para su ERP, con sus centros de costo.</p>
+<div class="stats">
+<div class="stat"><b>COP 1,2M</b><span>suscripción mensual · igual a Clara</span></div>
+<div class="stat"><b>1%</b><span>comisión de retiros · Clara 2%</span></div>
+<div class="stat"><b>1%</b><span>cashback en tarjetas · 6 meses</span></div>
+<div class="stat"><b>4x1000</b><span>exención total · tarjetas</span></div>
+<div class="stat"><b>26 países</b><span>Jeeves · Clara opera en 3</span></div>
+</div>
+<div class="cards">
+<div class="cc"><div class="cc-photo p-elite"><img src="https://carlosgomez-cloud.github.io/propuesta_toyotafs/jeeves-card-world-elite.png" alt="Tarjeta World Elite"></div><span>World Elite · Gerencia</span></div>
+<div class="cc"><div class="cc-photo p-corp"><img src="https://carlosgomez-cloud.github.io/propuesta_toyotafs/jeeves-card-corporate.png" alt="Tarjeta Corporativa"></div><span>Corporativa · Equipos</span></div>
+<div class="cc"><div class="cc-photo p-virt"><img src="https://carlosgomez-cloud.github.io/propuesta_toyotafs/jeeves-card-virtual.png" alt="Tarjeta Virtual"></div><span>Virtual · Pagos en línea</span></div>
+</div>
+</div>
+
+<section id="cotizacion">
+<div class="sh"><div><h2>Cotización · Jeeves vs. Clara</h2><p>Mismo precio de suscripción, menor costo por retiro y más beneficio por cada peso que pasa por las tarjetas.</p></div></div>
+<div class="tbl"><table class="cmp">
+<tr><th>Concepto</th><th>Jeeves</th><th>Clara</th></tr>
+<tr><td>Suscripción mensual</td><td><b class="gold">COP 1.200.000</b></td><td>COP 1.200.000</td></tr>
+<tr><td>Suscripción anual</td><td><b class="gold">COP 14.400.000</b></td><td>COP 14.400.000</td></tr>
+<tr><td>Comisión por retiros en efectivo</td><td><b class="green" style="font-size:20px">1%</b></td><td><b style="font-size:20px">2%</b></td></tr>
+<tr><td>Costo anual de retiros<br><small>Sobre <span class="retMes">—</span> al mes</small></td><td><b class="green" id="cRetJ">—</b></td><td id="cRetC">—</td></tr>
+<tr><td>Cashback en tarjetas<br><small>No aplica sobre retiros</small></td><td><b class="gold">1%</b><br><small>primeros 6 meses</small></td><td class="cPct">0,10%</td></tr>
+<tr><td>Cashback estimado · primer año<br><small>Sobre <span class="gMes">—</span> al mes en tarjetas</small></td><td><b class="green" id="cbJeeves">—</b></td><td id="cbClara">—</td></tr>
+<tr><td>Costo neto anual · primer año<br><small>Suscripción + retiros − cashback</small></td><td><b class="green" id="netJ1">—</b></td><td id="netC1">—</td></tr>
+<tr><td>Costo neto anual · desde el segundo año</td><td><b class="green" id="netJ2">—</b></td><td id="netC2">—</td></tr>
+<tr><td>Diferencia a favor con Jeeves</td><td colspan="2" style="text-align:center"><b class="gold" id="dif1" style="font-size:22px">—</b><br><small id="dif2">—</small></td></tr>
+</table></div>
+<div class="cmp-note">Cálculo sobre el mismo gasto en tarjetas y el mismo monto de retiros para ambas propuestas (ajustables en el simulador). Cashback de Clara de referencia: <span class="cPct">0,10%</span> sobre 12 meses. Información de Clara según la propuesta que recibió Chevyplan y su información pública; puede variar.</div>
+</section>
+
+<section id="calc">
+<div class="sh">
+<div>
+<h2>Simulador de eficiencia financiera</h2>
+<p>Calculado sobre COP 300 millones al mes en pagos con tarjeta. Mueve la barra para simular hasta COP 500 millones; con el botón puedes ver y ajustar los demás supuestos (retiros, suscripción y automatización de facturas).</p>
+</div>
+<button class="toggle-btn" id="btnCalc" onclick="toggleCalc()">⚙️ Ver cálculos y supuestos</button>
+</div>
+
+<div class="panel" id="calcPanel" hidden>
+<div class="grid">
+<div><label>Plan de la Plataforma</label><input type="text" value="Suscripción Jeeves · mensual" disabled></div>
+<div><label>Valor mensual de la suscripción (COP)</label><input type="number" id="cuota" value="1200000" min="0" step="50000"><div class="hint">Igual a la propuesta de Clara (COP 14.400.000 al año)</div></div>
+<div><label>Gravamen 4x1000 (GMF) · anual</label><input type="text" id="gmfPrev" disabled></div>
+<div><label>Cashback 1% · primeros 6 meses</label><input type="text" id="cbPrev" disabled></div>
+<div><label>Cashback Clara (%)</label><input type="number" id="claraPct" value="0.10" min="0" step="0.01"><div class="hint">Cashback de referencia de Clara sobre el consumo mensual</div></div>
+</div>
+<div class="panel" style="margin:18px 0 0;background:var(--card2)">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px"><b style="font-size:15px">🏧 Ahorro en Retiros en Efectivo</b><label style="margin:0;display:flex;align-items:center;gap:8px;cursor:pointer"><input type="checkbox" id="chkRet" checked style="accent-color:var(--green);width:16px;height:16px"> Activar</label></div>
+<div class="grid" id="retGrid">
+<div><label>Monto de efectivo mensual (COP)</label><input type="number" id="efectivo" value="100000000" step="5000000"></div>
+<div><label>Comisión de retiros Jeeves (%)</label><input type="number" id="retJ" value="1" min="0" step="0.1"></div>
+<div><label>Comisión de retiros Clara (%)</label><input type="number" id="retC" value="2" min="0" step="0.1"><div class="hint">El ahorro aplica sobre la diferencia frente a Clara</div></div>
+</div>
+</div>
+<div class="panel" style="margin:18px 0 0;background:var(--card2)">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px"><b style="font-size:15px">🧾 Ahorro por Automatización de Facturas</b><label style="margin:0;display:flex;align-items:center;gap:8px;cursor:pointer"><input type="checkbox" id="chkFact" checked style="accent-color:var(--green);width:16px;height:16px"> Activar</label></div>
+<div class="grid" id="factGrid">
+<div><label>Salario mensual operativo (COP)</label><input type="number" id="salario" value="3500000" step="100000"></div>
+<div><label>Facturas procesadas al mes</label><input type="number" id="facturas" value="200" step="5"></div>
+<div><label>Minutos por factura (captura manual)</label><input type="number" id="minutos" value="8" step="1"></div>
+<div><label>Horas trabajadas al mes</label><input type="number" id="horas" value="160" step="10"></div>
+</div>
+</div>
+<div class="note"><b>Fórmulas.</b> Volumen anual = gasto mensual en tarjetas × 12 · Ahorro 4x1000 = volumen anual × 0,4% · Cashback = gasto mensual en tarjetas × 6 meses × 1% (solo primer año; no aplica sobre retiros) · Ahorro en retiros = monto mensual × (comisión Clara − comisión Jeeves) × 12 · Automatización de facturas = facturas/mes × minutos ÷ 60 × (salario ÷ horas) × 12 · Costo de plataforma = suscripción mensual × 12 · Neto = ahorro total − costo de plataforma · ROE = neto ÷ costo de plataforma · Costo neto frente a Clara = suscripción + comisión de retiros − cashback.<br><br><b>Supuestos.</b> Gasto de referencia en tarjetas: COP 300 millones al mes (ajustable hasta COP 500 millones), sujeto al análisis de crédito de Jeeves. El monto de retiros en efectivo (COP 100 millones/mes), el salario, las facturas al mes, los minutos por factura y las horas trabajadas son estimaciones no confirmadas con Chevyplan. Valores antes de los impuestos que apliquen.</div>
+</div>
+
+<div class="slider-box">
+<div class="slider-top">
+<label>Gasto mensual en tarjetas: <b id="gastoLbl">—</b></label>
+<div class="manual">Ingresar valor (COP) <input type="text" inputmode="numeric" id="gastoTxt" value="300.000.000"></div>
+</div>
+<input type="range" id="gastoRange" min="100000000" max="500000000" step="10000000" value="300000000">
+<input type="hidden" id="gasto" value="300000000">
+<div class="slider-scale"><span style="left:0">$100 millones</span><span style="left:50%;transform:translateX(-50%)">▲ $300M · referencia</span><span style="right:0">$500 millones</span></div>
+<div class="hint">Gasto mensual de referencia en tarjetas: COP 300.000.000 (sujeto a aprobación de crédito).</div>
+</div>
+
+<div class="res-title">Ahorros por rubro · Anual</div>
+<div class="rsg">
+<div class="rs"><small>Ahorro 4x1000 (GMF)</small><b id="rGmf">—</b></div>
+<div class="rs"><small>Cashback 1% · primeros 6 meses</small><b id="rCb">—</b></div>
+<div class="rs"><small>Retiros en efectivo · 1% vs. 2% Clara</small><b id="rRet">—</b></div>
+<div class="rs"><small>Automatización de facturas</small><b id="rFact">—</b></div>
+</div>
+
+<div class="tot">
+<div class="tt"><small>Ahorro Total · Primer Año</small><div class="big" id="t1">—</div><div class="net">Menos costo de plataforma (<span class="cost">—</span>) = <b id="n1">—</b> neto</div></div>
+<div class="tt"><small>Ahorro Total · A partir del segundo año</small><div class="big" id="t2">—</div><div class="net">Menos costo de plataforma (<span class="cost">—</span>) = <b id="n2">—</b> neto</div></div>
+</div>
+
+<div class="tt g" style="margin-top:16px"><small>⏱️ Tiempo que tardaría Clara en igualar el cashback de Jeeves</small>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:10px">
+<div><div style="font-size:12px;color:var(--mut)">Jeeves · 1% durante 6 meses</div><div class="big" id="tJ" style="color:var(--green);font-size:26px;margin:2px 0">—</div><div style="font-size:12.5px;color:var(--mut)"><b id="tJm" style="color:var(--txt)">—</b> al mes</div></div>
+<div><div style="font-size:12px;color:var(--mut)">Clara · <span class="cPct">0,10%</span> mensual</div><div class="big" id="tCm" style="color:var(--txt);font-size:26px;margin:2px 0">—</div><div style="font-size:12.5px;color:var(--mut)">al mes</div></div>
+<div><div style="font-size:12px;color:var(--mut)">Meses para igualar a Jeeves</div><div class="big" id="tMeses" style="color:var(--gold);font-size:26px;margin:2px 0">—</div><div style="font-size:12.5px;color:var(--mut)" id="tAnos">—</div></div>
+</div>
+<div class="net" style="margin-top:12px" id="tTxt">—</div></div>
+
+<div class="roe">
+<div class="rr"><small>🏆 ROE · Primer año</small><div class="big" id="roe1">—</div></div>
+<div class="rr"><small>🏆 ROE · A partir del segundo año</small><div class="big" id="roe2">—</div></div>
+</div>
+</section>
+
+<section id="valor">
+<div class="sh"><div><h2>Valores agregados incluidos</h2><p>Todo dentro de la misma suscripción: tarjetas, legalización de gastos, control y la parte contable resuelta hasta el ERP.</p></div></div>
+<div class="why">
+<div class="wc"><div class="ic">💳</div><h3>Tarjetas corporativas</h3><p>Físicas y virtuales Mastercard, incluida World Elite para gerencia. Creación masiva en un clic, Apple Pay / Google Pay, tarjetas de presupuesto único (dotaciones, bonificaciones) y hasta 37 días sin intereses, sin 4x1000.</p></div>
+<div class="wc g"><div class="ic">🤖</div><h3>Legalización de gastos con IA</h3><p>El agente pide el soporte por WhatsApp apenas ocurre la compra, lo cruza con la transacción y extrae NIT, valor, IVA y fecha. Se acaba la persecución de facturas al cierre.</p></div>
+<div class="wc"><div class="ic">📒</div><h3>Contabilidad e integración al ERP</h3><p>Cuentas GL, centros de costo y terceros configurados una sola vez. API sin costo para su equipo de TI, o archivo con la estructura exacta de su ERP, listo para cargar.</p></div>
+<div class="wc"><div class="ic">🛡️</div><h3>Control y políticas</h3><p>Límites diarios, semanales, mensuales y de por vida; habilitar o bloquear categorías y comercios; flujos de aprobación y política de viáticos cargada en la plataforma, con alertas de lo que no cumple.</p></div>
+<div class="wc"><div class="ic">🔍</div><h3>Agentes que auditan el gasto</h3><p>Detectan transacciones sin soporte, inconsistencias y gastos fuera de política antes de que lleguen a contabilidad.</p></div>
+<div class="wc"><div class="ic">👁️</div><h3>Visibilidad en tiempo real</h3><p>Todos los gastos de todas las tarjetas en una sola plataforma, sin esperar el cierre. Los administradores operan sin acceso a los datos sensibles de las tarjetas.</p></div>
+</div>
+<div class="tbl"><table class="cmp">
+<tr><th>Capacidad</th><th>Jeeves</th><th>Clara</th></tr>
+<tr><td>Origen y presencia</td><td><b class="gold">Compañía estadounidense</b><br><small>26 países</small></td><td>3 países</td></tr>
+<tr><td>Comisión de retiros en efectivo</td><td><b class="gold">1%</b></td><td>2%</td></tr>
+<tr><td>Legalización de gastos con agente de IA<br><small>Recibe el soporte, lo cruza con la transacción y extrae los datos</small></td><td><span class="yes">✓</span><br><small>Por WhatsApp, apenas ocurre la compra</small></td><td>—</td></tr>
+<tr><td>Agentes de IA que auditan el gasto<br><small>Transacciones sin soporte, inconsistencias y políticas</small></td><td><span class="yes">✓</span></td><td>—</td></tr>
+<tr><td>Integración con el ERP</td><td><span class="yes">✓ 2 vías</span><br><small>API sin costo o archivo con su estructura (cuentas GL, centros de costo)</small></td><td><small>Conectores nativos: la empresa se acomoda a los campos del proveedor</small></td></tr>
+<tr><td>Tipos de límite por tarjeta</td><td><span class="yes">✓</span><br><small>Diario, semanal, mensual y de por vida</small></td><td>Diario y mensual</td></tr>
+<tr><td>Control por categoría y comercio</td><td><span class="yes">✓</span><br><small>Habilitar o bloquear categorías, o limitar a un comercio</small></td><td>Bloqueo de categorías</td></tr>
+<tr><td>Política de viáticos cargada en Jeeves<br><small>Topes por cargo, destino y categoría</small></td><td><span class="yes">✓</span><br><small>Controla cada gasto contra la política</small></td><td>—</td></tr>
+<tr><td>Tarjetas físicas y virtuales</td><td><span class="yes">✓</span><br><small>Creación masiva · virtuales en Apple Pay / Google Pay</small></td><td><span class="yes">✓</span></td></tr>
+<tr><td>Modelo de precio</td><td><span class="yes">✓ Todo incluido</span><br><small>Una suscripción, sin cuota de manejo ni costo por tarjeta</small></td><td><small>Módulos adicionales con costo</small></td></tr>
+</table></div>
+</section>
+
+<section id="conciliacion">
+<div class="sh"><div><h2>Legalización y conciliación de gastos</h2><p>Del momento de la compra al archivo que recibe el ERP de Chevyplan, sin captura manual.</p></div></div>
+<div class="steps">
+<div class="st"><b>1</b><h4>Compra con la tarjeta</h4><p>El colaborador paga con su tarjeta física o virtual, dentro de los límites y categorías definidos.</p></div>
+<div class="st"><b>2</b><h4>El agente de IA pide el soporte</h4><p>Por WhatsApp, apenas ocurre la compra, solicita la foto del recibo o factura y el motivo del gasto.</p></div>
+<div class="st"><b>3</b><h4>Cruza y extrae</h4><p>Identifica la transacción, confirma que el soporte corresponde y extrae NIT, valor, IVA y fecha.</p></div>
+<div class="st"><b>4</b><h4>Listo para el ERP</h4><p>El gasto queda clasificado con su cuenta GL y centro de costo, validado contra la política; los agentes señalan lo que no cumple, falta o no cuadra.</p></div>
+</div>
+<div class="two" style="margin-top:16px">
+<div class="wc"><div class="ic">🔌</div><h3>Vía 1 · API para su equipo de TI</h3><p>Entregamos la API sin costo para integrar Jeeves con el ERP a su medida: transacciones, soportes y clasificación contable en tiempo real.</p></div>
+<div class="wc"><div class="ic">📄</div><h3>Vía 2 · Archivo con la estructura de su ERP</h3><p>Tomamos una sola vez la estructura de su ERP y enlazamos cuentas GL, centros de costo, terceros y demás campos. Desde ahí, Jeeves genera el archivo exactamente como lo recibe su ERP.</p></div>
+</div>
+<div class="xl">
+<div class="res-title" style="margin-top:20px">Ejemplo del archivo de carga</div>
+<div class="tbl"><table>
+<tr><th>Fecha</th><th>Tarjeta · Usuario</th><th>Comercio</th><th>NIT</th><th>Valor COP</th><th>IVA</th><th>Cuenta GL</th><th>Centro de costo</th><th>Soporte</th></tr>
+<tr><td>2026-11-18</td><td>•• 4821 · Comercial</td><td>Hotel Medellín</td><td>900.123.456-7</td><td>540.000</td><td>86.218</td><td>519525 Viáticos</td><td>CC-110 Comercial</td><td class="green">✓ Factura</td></tr>
+<tr><td>2026-11-19</td><td>•• 7730 · Mercadeo</td><td>Pauta digital</td><td>901.555.210-3</td><td>3.200.000</td><td>510.924</td><td>523560 Publicidad</td><td>CC-210 Mercadeo</td><td class="green">✓ Factura</td></tr>
+<tr><td>2026-11-20</td><td>•• 1192 · Operaciones</td><td>Restaurante</td><td>800.987.654-1</td><td>185.000</td><td>13.704</td><td>519530 Representación</td><td>CC-310 Operaciones</td><td class="gold">⚠ Fuera de política</td></tr>
+</table></div>
+<div class="cap">Ejemplo ilustrativo. Las columnas se ajustan a la estructura contable de Chevyplan.</div>
+</div>
+</section>
+
+<section id="videos">
+<div class="sh"><div><h2>Véalo en acción</h2><p>Videos cortos sobre lo que conversamos: la plataforma, los soportes y la legalización de gastos.</p></div></div>
+<div class="hub">
+<div><h3>🎬 Conoce la plataforma · Demo</h3><p><b style="color:var(--txt)">Conoce a Jeeves, paso a paso:</b> tutoriales para crear tarjetas, invitar al equipo, usar el asistente de IA y las herramientas de contabilidad (Colombia · español).</p></div>
+<a class="btn" href="https://welcome-jeeves.jeeves-8317.chatgpt.site/" target="_blank" rel="noopener">Conoce a Jeeves ↗</a>
+</div>
+<div class="vids">
+<div class="vc"><div class="vf" data-v="ol8S1W9aeas"><img src="https://i.ytimg.com/vi/ol8S1W9aeas/hqdefault.jpg" alt=""><div class="pl"><span>▶</span></div></div><div class="vb"><span class="tag">Demo · Captura y legalización</span><h3>Guía de la plataforma Jeeves en Colombia</h3><p>Recorrido por tarjetas, transacciones con soportes faltantes, equipos, integración contable y políticas de aprobación.</p></div></div>
+<div class="vc"><div class="vf" data-v="Fgnr3yAzhYc"><img src="https://i.ytimg.com/vi/Fgnr3yAzhYc/hqdefault.jpg" alt=""><div class="pl"><span>▶</span></div></div><div class="vb"><span class="tag">Soportes y facturas</span><h3>Facturas de todos los gastos en un solo lugar</h3><p>Caso H&amp;M: soportes centralizados para la conciliación.</p></div></div>
+<div class="vc"><div class="vf" data-v="R1sPPtjGIBQ"><img src="https://i.ytimg.com/vi/R1sPPtjGIBQ/hqdefault.jpg" alt=""><div class="pl"><span>▶</span></div></div><div class="vb"><span class="tag">Viáticos</span><h3>Viáticos legalizados en el momento de la compra</h3><p>Caso Burger King: cada viajero paga con su tarjeta, sube la foto de la factura y la legalización queda hecha.</p></div></div>
+<div class="vc"><div class="vf" data-v="aDBybQsWovc"><img src="https://i.ytimg.com/vi/aDBybQsWovc/hqdefault.jpg" alt=""><div class="pl"><span>▶</span></div></div><div class="vb"><span class="tag">Credenciales</span><h3>Por qué los CFO eligen Jeeves</h3><p>Lo que dicen los equipos financieros que ya trabajan con Jeeves.</p></div></div>
+</div>
+</section>
+
+<section id="diag">
+<div class="sh"><div><h2>Diagnóstico</h2><p>Lo que conversamos y cómo lo resuelve Jeeves.</p></div></div>
+<div class="tbl"><table>
+<tr><th>Frente</th><th>Hoy</th><th>Con Jeeves</th></tr>
+<tr><td>Costo de la solución</td><td>Propuesta de Clara: COP 1.200.000 al mes y retiros al 2%.</td><td>Misma suscripción, retiros al 1% y 1% de cashback en tarjetas los primeros 6 meses.</td></tr>
+<tr><td>Legalización de gastos</td><td>Proceso manual: el equipo contable solicita soportes y facturas pendientes.</td><td>Agente de IA que pide el soporte por WhatsApp, lo cruza con la transacción y deja el gasto listo.</td></tr>
+<tr><td>Integración contable</td><td>Estructurar la información para que fluya al ERP con sus centros de costo.</td><td>API sin costo o archivo con la estructura de su ERP (cuentas GL, centros de costo), listo para cargar.</td></tr>
+<tr><td>Control de tarjetas</td><td>Creación de tarjetas y restricciones de uso poco ágiles.</td><td>Creación masiva, límites por tarjeta, categoría y comercio, y política de viáticos cargada en la plataforma.</td></tr>
+</table></div>
+</section>
+
+<section id="plan">
+<div class="sh"><div><h2>Resumen del plan</h2></div></div>
+<div class="plan">
+<div class="pc g">
+<h3>Suscripción Jeeves</h3>
+<div class="price">COP 1.200.000 <span style="font-size:15px;color:var(--mut);font-weight:500">/ mes</span></div>
+<div style="color:var(--mut);font-size:14px;margin:-8px 0 14px">COP 14.400.000 al año · el mismo valor de la propuesta de Clara</div>
+<ul>
+<li>Tarjetas físicas, virtuales y World Elite · creación masiva</li>
+<li>Agente de IA para legalización de gastos</li>
+<li>Límites, categorías, aprobaciones y política de viáticos</li>
+<li>Cuentas GL, centros de costo e integración al ERP (API o archivo)</li>
+<li>Retiros en efectivo al 1%</li>
+</ul>
+</div>
+<div class="pc">
+<h3>Beneficios financieros</h3>
+<div class="price" style="color:var(--green)" id="planNet">—</div>
+<ul>
+<li>Hasta 37 días sin intereses en tarjetas</li>
+<li>Exención total del 4x1000 en los pagos con tarjeta</li>
+<li>1% de cashback en tarjetas durante los primeros 6 meses</li>
+<li>Comisión de retiros a la mitad: 1% frente a 2%</li>
+<li>Sin cuota de manejo ni costo por tarjeta</li>
+</ul>
+</div>
+</div>
+</section>
+
+<footer>
+<b>Carlos Gómez</b> · Senior Enterprise AE · Jeeves Colombia · carlos.gomez@tryjeeves.com · +57 316 480 1023<br>
+<span style="font-size:12px">Simulación con fines ilustrativos. Valores en COP antes de los impuestos que apliquen. El cupo está sujeto al análisis de crédito de Jeeves. El cashback aplica sobre compras con tarjeta y no sobre retiros en efectivo.</span>
+</footer>
+</div>
+
+<script>
+function toggleCalc(){var p=document.getElementById('calcPanel');p.hidden=!p.hidden;document.getElementById('btnCalc').textContent=p.hidden?'⚙️ Ver cálculos y supuestos':'⚙️ Ocultar cálculos y supuestos';}
+function v(id){var x=parseFloat(document.getElementById(id).value);return isNaN(x)?0:x;}
+function cop(n){return (n<0?'−':'')+'$'+Math.round(Math.abs(n)).toLocaleString('es-CO');}
+function pct(n){return Math.round(n).toLocaleString('es-CO')+'%';}
+function set(id,t){document.getElementById(id).textContent=t;}
+function setAll(c,t){document.querySelectorAll('.'+c).forEach(function(e){e.textContent=t;});}
+function calc(){
+var gasto=v('gasto'),costo=v('cuota')*12;
+var fOn=document.getElementById('chkFact').checked, rOn=document.getElementById('chkRet').checked;
+document.getElementById('factGrid').style.opacity=fOn?1:.45;
+document.getElementById('retGrid').style.opacity=rOn?1:.45;
+var ahorroGMF=gasto*12*0.004;
+var ahorroCashback=gasto*6*0.01;
+var ahorroFact=fOn?(v('facturas')*v('minutos')/60)*(v('horas')?v('salario')/v('horas'):0)*12:0;
+var ef=v('efectivo'),pJ=v('retJ')/100,pC=v('retC')/100;
+var ahorroRet=(rOn&&pC>pJ)?ef*(pC-pJ)*12:0;
+var t1=ahorroGMF+ahorroCashback+ahorroFact+ahorroRet, t2=ahorroGMF+ahorroFact+ahorroRet;
+var n1=t1-costo, n2=t2-costo;
+var r1=costo>0?n1/costo*100:0, r2=costo>0?n2/costo*100:0;
+document.getElementById('gmfPrev').value=cop(ahorroGMF);
+document.getElementById('cbPrev').value=cop(ahorroCashback);
+set('gastoLbl',cop(gasto)+' / mes');
+set('rGmf',cop(ahorroGMF));set('rCb',cop(ahorroCashback));
+var rf=document.getElementById('rFact');rf.textContent=fOn?cop(ahorroFact):'Desactivado';rf.style.color=fOn?'':'var(--mut)';
+var rr=document.getElementById('rRet');rr.textContent=!rOn?'Desactivado':(pC>pJ?cop(ahorroRet):'Sin ahorro');rr.style.color=(rOn&&pC>pJ)?'':'var(--mut)';
+set('t1',cop(t1));set('n1',cop(n1));set('t2',cop(t2));set('n2',cop(n2));
+setAll('cost',cop(costo));
+set('roe1',pct(r1));set('roe2',pct(r2));
+set('planNet',cop(n1)+' neto · año 1');
+// Comparativo Clara
+var cp=v('claraPct')/100, cbClara=gasto*12*cp;
+var cpTxt=(cp*100).toLocaleString('es-CO',{minimumFractionDigits:2,maximumFractionDigits:2})+'%';
+setAll('cPct',cpTxt);
+var efU=rOn?ef:0, retJ=efU*pJ*12, retC=efU*pC*12, costoC=v('cuota')*12;
+setAll('retMes',cop(efU));setAll('gMes',cop(gasto));
+set('cRetJ',cop(retJ));set('cRetC',cop(retC));
+set('cbJeeves',cop(ahorroCashback));set('cbClara',cop(cbClara));
+var j1=costo+retJ-ahorroCashback, j2=costo+retJ, c1=costoC+retC-cbClara, c2=c1;
+set('netJ1',cop(j1));set('netC1',cop(c1));set('netJ2',cop(j2));set('netC2',cop(c2));
+set('dif1',cop(c1-j1)+' menos con Jeeves en el primer año');
+set('dif2',cop(c2-j2)+' menos cada año a partir del segundo año');
+var mC=(gasto>0&&cp>0)?ahorroCashback/(gasto*cp):0;
+var mTxt=cp>0?Math.round(mC)+' meses':'Nunca';
+var aTxt=cp>0?'≈ '+(mC/12).toLocaleString('es-CO',{maximumFractionDigits:1})+' años':'sin cashback';
+set('tJ',cop(ahorroCashback));set('tJm',cop(gasto*0.01));set('tCm',cop(gasto*cp));set('tMeses',mTxt);set('tAnos',aTxt);
+set('tTxt',cp>0?'Con '+cop(gasto)+' al mes en tarjetas, Jeeves devuelve '+cop(ahorroCashback)+' en los primeros 6 meses. Al '+cpTxt+', Clara devuelve '+cop(gasto*cp)+' al mes y necesita '+mTxt+' ('+aTxt+') para llegar al mismo valor.':'Sin cashback de Clara, nunca se iguala el cashback de Jeeves.');
+}
+['cuota','salario','facturas','minutos','horas','claraPct','efectivo','retJ','retC'].forEach(function(id){document.getElementById(id).addEventListener('input',calc);});
+['chkFact','chkRet'].forEach(function(id){document.getElementById(id).addEventListener('change',calc);});
+(function(){
+var r=document.getElementById('gastoRange'), t=document.getElementById('gastoTxt'), h=document.getElementById('gasto');
+function fmt(n){return Math.round(n).toLocaleString('es-CO');}
+function setVal(n,src){n=Math.max(0,Math.round(n)||0);h.value=n;if(src!=='r')r.value=Math.min(Math.max(n,+r.min),+r.max);if(src!=='t')t.value=fmt(n);calc();}
+r.addEventListener('input',function(){setVal(+r.value,'r');});
+t.addEventListener('input',function(){setVal(+t.value.replace(/[^0-9]/g,''),'t');});
+t.addEventListener('blur',function(){t.value=fmt(+h.value);});
+})();
+document.querySelectorAll('.vf').forEach(function(el){el.addEventListener('click',function(){if(el.querySelector('iframe'))return;var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+el.dataset.v+'?autoplay=1&rel=0';f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';f.allowFullscreen=true;el.innerHTML='';el.appendChild(f);});});
+calc();
+</script>
+</body>
+</html>
