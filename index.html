@@ -139,6 +139,7 @@ tr:last-child td{border-bottom:none}
 footer{padding:36px 0 50px;color:var(--mut);font-size:13.5px}
 footer b{color:var(--txt)}
 @media(max-width:640px){.p-elite{width:150px;height:195px}.p-corp,.p-virt,.p-pay{width:100%;height:auto;aspect-ratio:1.7}.cc{width:100%}.cc:first-child{width:auto}.clogo{height:48px}.rr .big{font-size:40px}}
+.hl{background:linear-gradient(90deg,#1f1a0d,#141418)}.hl td{border-top:1px solid #4a3d18;border-bottom:1px solid #4a3d18}.cbx{display:flex;gap:18px;align-items:center;flex-wrap:wrap;background:linear-gradient(180deg,#1f1a0d,#141418);border:1px solid #4a3d18;border-radius:18px;padding:20px 24px;margin-top:16px}.cbx .n{font-family:"Inter Tight";font-size:48px;font-weight:800;color:var(--gold);line-height:1}.cbx .n small{font-size:18px;font-weight:600}.cbx p{color:var(--mut);font-size:15px;max-width:720px}.cbx p b{color:var(--txt)}
 </style>
 </head>
 <body>
@@ -257,11 +258,12 @@ footer b{color:var(--txt)}
 <tr><td>Costo anual de retiros<br><small>Sobre <span class="retMes">—</span> al mes</small></td><td><b class="green" id="cRetJ">—</b></td><td id="cRetC">—</td></tr>
 <tr><td>Cashback en tarjetas<br><small>No aplica sobre retiros</small></td><td><b class="gold">1%</b><br><small>primeros 6 meses</small></td><td class="cPct">0,10%</td></tr>
 <tr><td>Cashback estimado · primer año<br><small>Sobre <span class="gMes">—</span> al mes en tarjetas</small></td><td><b class="green" id="cbJeeves">—</b></td><td id="cbClara">—</td></tr>
-<tr><td>Tiempo para igualar el cashback de Jeeves<br><small>Lo que Jeeves devuelve en sus primeros 6 meses</small></td><td><b class="gold">6 meses</b></td><td><b id="cbMeses">—</b><br><small id="cbAnos">—</small></td></tr>
+<tr class="hl"><td>⏱️ Tiempo para igualar el cashback de Jeeves<br><small>Lo que Jeeves devuelve en sus primeros 6 meses</small></td><td><b class="gold" style="font-size:22px">6 meses</b></td><td><b id="cbMeses" class="gold" style="font-size:22px">—</b><br><small id="cbAnos">—</small></td></tr>
 <tr><td>Costo neto anual · primer año<br><small>Suscripción + retiros − cashback</small></td><td><b class="green" id="netJ1">—</b></td><td id="netC1">—</td></tr>
 <tr><td>Costo neto anual · desde el segundo año</td><td><b class="green" id="netJ2">—</b></td><td id="netC2">—</td></tr>
 <tr><td>Diferencia a favor con Jeeves</td><td colspan="2" style="text-align:center"><b class="gold" id="dif1" style="font-size:22px">—</b><br><small id="dif2">—</small></td></tr>
 </table></div>
+<div class="cbx"><div class="n"><span class="cbM">—</span></div><p>⏱️ <b>Es lo que tardaría Clara en igualar el cashback de Jeeves.</b> Jeeves devuelve <b class="cbJ">—</b> en los primeros 6 meses; al <span class="cPct">0,10%</span>, Clara devuelve <b class="cbCm">—</b> al mes y necesita <b class="cbM2">—</b> (<span class="cbA">—</span>) para llegar al mismo valor.</p></div>
 <div class="cmp-note">Cálculo sobre el mismo gasto en tarjetas y el mismo monto de retiros para ambas propuestas (ajustables en el simulador y en "Ver cálculos y supuestos"). Cashback de Clara de referencia: <span class="cPct">0,10%</span> sobre 12 meses. Información de Clara según la propuesta que recibió Chevyplan y su información pública; puede variar.</div>
 </section>
 
@@ -388,7 +390,7 @@ set('dif2',cop(c2-j2)+' menos cada año a partir del segundo año');
 var mC=(gasto>0&&cp>0)?ahorroCashback/(gasto*cp):0;
 var mTxt=cp>0?Math.round(mC)+' meses':'Nunca';
 var aTxt=cp>0?'≈ '+(mC/12).toLocaleString('es-CO',{maximumFractionDigits:1})+' años':'sin cashback';
-set('cbMeses',mTxt);set('cbAnos',aTxt+' al '+cpTxt);
+set('cbMeses',mTxt);set('cbAnos',aTxt+' al '+cpTxt);setAll('cbM',mTxt);setAll('cbM2',mTxt);setAll('cbA',aTxt);setAll('cbJ',cop(ahorroCashback));setAll('cbCm',cop(gasto*cp));
 }
 ['cuota','salario','facturas','minutos','horas','claraPct','efectivo','retJ','retC'].forEach(function(id){document.getElementById(id).addEventListener('input',calc);});
 ['chkFact','chkRet'].forEach(function(id){document.getElementById(id).addEventListener('change',calc);});
