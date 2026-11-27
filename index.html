@@ -203,7 +203,8 @@ footer b{color:var(--txt)}
 <div class="grid" id="retGrid">
 <div><label>Monto de efectivo mensual (COP)</label><input type="number" id="efectivo" value="100000000" step="5000000"></div>
 <div><label>Comisión de retiros Jeeves (%)</label><input type="number" id="retJ" value="1" min="0" step="0.1"></div>
-<div><label>Comisión de retiros Clara (%)</label><input type="number" id="retC" value="2" min="0" step="0.1"><div class="hint">El ahorro aplica sobre la diferencia frente a Clara</div></div>
+<div><label>Tarifa estándar de retiros Jeeves (%)</label><input type="number" id="retStd" value="3" min="0" step="0.1"><div class="hint">El descuento aplica sobre la diferencia entre la tarifa estándar y la comisión negociada</div></div>
+<div><label>Comisión de retiros Clara (%)</label><input type="number" id="retC" value="2" min="0" step="0.1"><div class="hint">Se usa en la cotización Jeeves vs. Clara</div></div>
 </div>
 </div>
 <div class="panel" style="margin:18px 0 0;background:var(--card2)">
@@ -215,7 +216,7 @@ footer b{color:var(--txt)}
 <div><label>Horas trabajadas al mes</label><input type="number" id="horas" value="160" step="10"></div>
 </div>
 </div>
-<div class="note"><b>Fórmulas.</b> Volumen anual = gasto mensual en tarjetas × 12 · Ahorro 4x1000 = volumen anual × 0,4% · Cashback = gasto mensual en tarjetas × 6 meses × 1% (solo primer año; no aplica sobre retiros) · Ahorro en retiros = monto mensual × (comisión Clara − comisión Jeeves) × 12 · Automatización de facturas = facturas/mes × minutos ÷ 60 × (salario ÷ horas) × 12 · Costo de plataforma = suscripción mensual × 12 · Neto = ahorro total − costo de plataforma · ROE = neto ÷ costo de plataforma · Costo neto frente a Clara = suscripción + comisión de retiros − cashback.<br><br><b>Supuestos.</b> Gasto de referencia en tarjetas: COP 300 millones al mes (ajustable hasta COP 500 millones), sujeto al análisis de crédito de Jeeves. El monto de retiros en efectivo (COP 100 millones/mes), el salario, las facturas al mes, los minutos por factura y las horas trabajadas son estimaciones no confirmadas con Chevyplan. Valores antes de los impuestos que apliquen.</div>
+<div class="note"><b>Fórmulas.</b> Volumen anual = gasto mensual en tarjetas × 12 · Ahorro 4x1000 = volumen anual × 0,4% · Cashback = gasto mensual en tarjetas × 6 meses × 1% (solo primer año; no aplica sobre retiros) · Descuento en retiros = monto mensual × (tarifa estándar 3% − comisión negociada 1%) × 12 (la comparación frente al 2% de Clara está en la cotización) · Automatización de facturas = facturas/mes × minutos ÷ 60 × (salario ÷ horas) × 12 · Costo de plataforma = suscripción mensual × 12 · Neto = ahorro total − costo de plataforma · ROE = neto ÷ costo de plataforma · Costo neto frente a Clara = suscripción + comisión de retiros − cashback.<br><br><b>Supuestos.</b> Gasto de referencia en tarjetas: COP 300 millones al mes (ajustable hasta COP 500 millones), sujeto al análisis de crédito de Jeeves. El monto de retiros en efectivo (COP 100 millones/mes), el salario, las facturas al mes, los minutos por factura y las horas trabajadas son estimaciones no confirmadas con Chevyplan. Valores antes de los impuestos que apliquen.</div>
 </div>
 
 <div class="slider-box">
@@ -233,7 +234,7 @@ footer b{color:var(--txt)}
 <div class="rsg">
 <div class="rs"><small>Ahorro 4x1000 (GMF)</small><b id="rGmf">—</b></div>
 <div class="rs"><small>Cashback 1% · primeros 6 meses · compras con tarjeta, no aplica a retiros</small><b id="rCb">—</b></div>
-<div class="rs"><small>Retiros en efectivo · 1% vs. 2% Clara</small><b id="rRet">—</b></div>
+<div class="rs"><small>Descuento en retiros · tarifa estándar 3% → 1%</small><b id="rRet">—</b></div>
 <div class="rs"><small>Automatización de facturas</small><b id="rFact">—</b></div>
 </div>
 
@@ -361,8 +362,8 @@ document.getElementById('retGrid').style.opacity=rOn?1:.45;
 var ahorroGMF=gasto*12*0.004;
 var ahorroCashback=gasto*6*0.01;
 var ahorroFact=fOn?(v('facturas')*v('minutos')/60)*(v('horas')?v('salario')/v('horas'):0)*12:0;
-var ef=v('efectivo'),pJ=v('retJ')/100,pC=v('retC')/100;
-var ahorroRet=(rOn&&pC>pJ)?ef*(pC-pJ)*12:0;
+var ef=v('efectivo'),pJ=v('retJ')/100,pC=v('retC')/100,pS=v('retStd')/100;
+var ahorroRet=(rOn&&pS>pJ)?ef*(pS-pJ)*12:0;
 var t1=ahorroGMF+ahorroCashback+ahorroFact+ahorroRet, t2=ahorroGMF+ahorroFact+ahorroRet;
 var n1=t1-costo, n2=t2-costo;
 var r1=costo>0?n1/costo*100:0, r2=costo>0?n2/costo*100:0;
@@ -371,7 +372,7 @@ document.getElementById('cbPrev').value=cop(ahorroCashback);
 set('gastoLbl',cop(gasto)+' / mes');
 set('rGmf',cop(ahorroGMF));set('rCb',cop(ahorroCashback));
 var rf=document.getElementById('rFact');rf.textContent=fOn?cop(ahorroFact):'Desactivado';rf.style.color=fOn?'':'var(--mut)';
-var rr=document.getElementById('rRet');rr.textContent=!rOn?'Desactivado':(pC>pJ?cop(ahorroRet):'Sin ahorro');rr.style.color=(rOn&&pC>pJ)?'':'var(--mut)';
+var rr=document.getElementById('rRet');rr.textContent=!rOn?'Desactivado':(pS>pJ?cop(ahorroRet):'Sin ahorro');rr.style.color=(rOn&&pS>pJ)?'':'var(--mut)';
 set('t1',cop(t1));set('n1',cop(n1));set('t2',cop(t2));set('n2',cop(n2));
 setAll('cost',cop(costo));
 set('roe1',pct(r1));set('roe2',pct(r2));
@@ -392,7 +393,7 @@ var mTxt=cp>0?Math.round(mC)+' meses':'Nunca';
 var aTxt=cp>0?'≈ '+(mC/12).toLocaleString('es-CO',{maximumFractionDigits:1})+' años':'sin cashback';
 set('cbMeses',mTxt);set('cbAnos',aTxt+' al '+cpTxt);setAll('cbM',mTxt);setAll('cbM2',mTxt);setAll('cbA',aTxt);setAll('cbJ',cop(ahorroCashback));setAll('cbCm',cop(gasto*cp));
 }
-['cuota','salario','facturas','minutos','horas','claraPct','efectivo','retJ','retC'].forEach(function(id){document.getElementById(id).addEventListener('input',calc);});
+['cuota','salario','facturas','minutos','horas','claraPct','efectivo','retJ','retC','retStd'].forEach(function(id){document.getElementById(id).addEventListener('input',calc);});
 ['chkFact','chkRet'].forEach(function(id){document.getElementById(id).addEventListener('change',calc);});
 (function(){
 var r=document.getElementById('gastoRange'), t=document.getElementById('gastoTxt'), h=document.getElementById('gasto');
