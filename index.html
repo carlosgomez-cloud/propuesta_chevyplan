@@ -103,7 +103,7 @@ tr:last-child td{border-bottom:none}
 .xl td:first-child{width:auto;font-weight:500}
 .xl td:nth-child(2){color:var(--txt)}
 .xl .cap{font-size:12px;color:var(--mut);margin:8px 0 0}
-.vids{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.vids{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
 .vc{background:var(--card);border:1px solid var(--bd);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
 .vf{position:relative;aspect-ratio:16/9;background:#000;cursor:pointer}
 .vf img{width:100%;height:100%;object-fit:cover;display:block;opacity:.85;transition:opacity .2s}
@@ -310,12 +310,14 @@ footer b{color:var(--txt)}
 </section>
 
 <section id="videos">
-<div class="sh"><div><h2>Véalo en acción</h2><p>Videos cortos sobre lo que conversamos: la plataforma, los soportes y la legalización de gastos.</p></div></div>
+<div class="sh"><div><h2>Véalo en acción</h2><p>Videos cortos sobre lo que conversamos: el asistente de IA, la contabilidad automática, los soportes y la legalización de gastos.</p></div></div>
 <div class="hub">
 <div><h3>🎬 Conoce la plataforma · Demo</h3><p><b style="color:var(--txt)">Conoce a Jeeves, paso a paso:</b> tutoriales para crear tarjetas, invitar al equipo, usar el asistente de IA y las herramientas de contabilidad (Colombia · español).</p></div>
 <a class="btn" href="https://welcome-jeeves.jeeves-8317.chatgpt.site/" target="_blank" rel="noopener">Conoce a Jeeves ↗</a>
 </div>
 <div class="vids">
+<div class="vc"><div class="vf" data-src="jeeves-asistente-ia.mp4"><img src="jeeves-asistente-ia.jpg" alt=""><div class="pl"><span>▶</span></div></div><div class="vb"><span class="tag">Asistente de IA</span><h3>Pregunta con tus palabras, respuestas en segundos</h3><p>El asistente de IA de Jeeves: tendencias de gasto, cargos recurrentes y recibos faltantes, sin armar reportes.</p></div></div>
+<div class="vc"><div class="vf" data-src="jeeves-contabilidad.mp4"><img src="jeeves-contabilidad.jpg" alt=""><div class="pl"><span>▶</span></div></div><div class="vb"><span class="tag">Contabilidad</span><h3>Contabilidad en automático</h3><p>Categorías, reglas contables y exportación a su ERP, listas para el cierre.</p></div></div>
 <div class="vc"><div class="vf" data-v="ol8S1W9aeas"><img src="https://i.ytimg.com/vi/ol8S1W9aeas/hqdefault.jpg" alt=""><div class="pl"><span>▶</span></div></div><div class="vb"><span class="tag">Demo · Captura y legalización</span><h3>Guía de la plataforma Jeeves en Colombia</h3><p>Recorrido por tarjetas, transacciones con soportes faltantes, equipos, integración contable y políticas de aprobación.</p></div></div>
 <div class="vc"><div class="vf" data-v="Fgnr3yAzhYc"><img src="https://i.ytimg.com/vi/Fgnr3yAzhYc/hqdefault.jpg" alt=""><div class="pl"><span>▶</span></div></div><div class="vb"><span class="tag">Soportes y facturas</span><h3>Facturas de todos los gastos en un solo lugar</h3><p>Caso H&amp;M: soportes centralizados para la conciliación.</p></div></div>
 <div class="vc"><div class="vf" data-v="R1sPPtjGIBQ"><img src="https://i.ytimg.com/vi/R1sPPtjGIBQ/hqdefault.jpg" alt=""><div class="pl"><span>▶</span></div></div><div class="vb"><span class="tag">Viáticos</span><h3>Viáticos legalizados en el momento de la compra</h3><p>Caso Burger King: cada viajero paga con su tarjeta, sube la foto de la factura y la legalización queda hecha.</p></div></div>
@@ -403,7 +405,8 @@ r.addEventListener('input',function(){setVal(+r.value,'r');});
 t.addEventListener('input',function(){setVal(+t.value.replace(/[^0-9]/g,''),'t');});
 t.addEventListener('blur',function(){t.value=fmt(+h.value);});
 })();
-document.querySelectorAll('.vf').forEach(function(el){el.addEventListener('click',function(){if(el.querySelector('iframe'))return;var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+el.dataset.v+'?autoplay=1&rel=0';f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';f.allowFullscreen=true;el.innerHTML='';el.appendChild(f);});});
+document.querySelectorAll('.vf[data-src]').forEach(function(el){el.addEventListener('click',function(){if(el.querySelector('video'))return;var vd=document.createElement('video');vd.src=el.dataset.src;vd.controls=true;vd.autoplay=true;vd.playsInline=true;vd.style.cssText='position:absolute;inset:0;width:100%;height:100%;background:#000';el.innerHTML='';el.appendChild(vd);});});
+document.querySelectorAll('.vf[data-v]').forEach(function(el){el.addEventListener('click',function(){if(el.querySelector('iframe'))return;var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+el.dataset.v+'?autoplay=1&rel=0';f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';f.allowFullscreen=true;el.innerHTML='';el.appendChild(f);});});
 calc();
 </script>
 </body>
